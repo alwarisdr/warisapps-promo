@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>รับทำเว็บร้านค้าออนไลน์ — warisapps.cloud</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sarabun:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --orange: #f97316;
+        --orange-light: #fb923c;
+        --orange-pale: #fff7ed;
+        --black: #0a0a0a;
+        --dark: #111111;
+        --card: #f9f9f9;
+        --border: #e5e7eb;
+        --border-dark: #2a2a2a;
+        --text: #111111;
+        --text-muted: #6b7280;
+        --text-light: #9ca3af;
+        --white: #ffffff;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", "Sarabun", sans-serif;
+        color: var(--text);
+        background: var(--white);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ─── NAV ─── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 48px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--black);
+        letter-spacing: -0.5px;
+      }
+
+      .nav-logo span {
+        color: var(--orange);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.15s;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn-nav {
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.15s;
+      }
+
+      .btn-nav.outline {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .btn-nav.outline:hover {
+        border-color: var(--text);
+      }
+
+      .btn-nav.fill {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .btn-nav.fill:hover {
+        background: #222;
+      }
+
+      /* ─── HERO ─── */
+      .hero {
+        background: var(--dark);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 48px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-image {
+        transform: scale(1.2);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -100px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(249, 115, 22, 0.08) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero-eyebrow {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 7vw, 96px);
+        font-weight: 900;
+        line-height: 1.05;
+        letter-spacing: -4px;
+        color: var(--white);
+        margin-bottom: 32px;
+        max-width: 800px;
+      }
+
+      .hero h1 .accent {
+        color: var(--orange);
+        display: block;
+      }
+
+      .hero-desc {
+        font-size: 17px;
+        color: #9ca3af;
+        max-width: 480px;
+        margin-bottom: 40px;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      .hero-actions {
+        max-width: 1100px;
+        width: 100%;
+        padding: 0 48px;
+        align-self: flex-start;
+        margin: 32px auto 0;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn-hero-primary {
+        padding: 14px 28px;
+        background: var(--orange);
+        color: #000;
+        font-size: 14px;
+        font-weight: 700;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: opacity 0.15s;
+        letter-spacing: -0.2px;
+      }
+
+      .btn-hero-primary:hover {
+        opacity: 0.85;
+      }
+
+      .btn-hero-ghost {
+        padding: 14px 28px;
+        background: transparent;
+        color: #9ca3af;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 6px;
+        text-decoration: none;
+        border: 1px solid #2a2a2a;
+        transition: all 0.15s;
+      }
+
+      .btn-hero-ghost:hover {
+        border-color: #555;
+        color: var(--white);
+      }
+
+      .trust-bar {
+        max-width: 1100px;
+        width: 100%;
+        padding: 0 48px;
+        align-self: flex-start;
+        margin: 24px auto 0;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .trust-label {
+        font-size: 11px;
+        color: #4b5563;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .trust-items {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .trust-item {
+        font-size: 13px;
+        color: #6b7280;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .trust-item::before {
+        content: "✓";
+        color: var(--orange);
+        font-weight: 700;
+        font-size: 11px;
+      }
+
+      /* ─── STATS ─── */
+      .stats {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .stats-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 48px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .stat-item {
+        padding: 48px 32px;
+        border-right: 1px solid var(--border);
+      }
+
+      .stat-item:last-child {
+        border-right: none;
+      }
+
+      .stat-num {
+        font-size: 52px;
+        font-weight: 900;
+        letter-spacing: -3px;
+        line-height: 1;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+
+      .stat-num sup {
+        font-size: 24px;
+        letter-spacing: -1px;
+        vertical-align: super;
+      }
+
+      .stat-num span {
+        color: var(--orange);
+        font-size: 36px;
+      }
+
+      .stat-label {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* ─── SECTION BASE ─── */
+      .section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 96px 48px;
+      }
+
+      .section-eyebrow {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 900;
+        letter-spacing: -2px;
+        line-height: 1.05;
+        color: var(--black);
+        margin-bottom: 16px;
+      }
+
+      .section-sub {
+        font-size: 16px;
+        color: var(--text-muted);
+        max-width: 480px;
+        line-height: 1.7;
+        margin-bottom: 56px;
+        font-weight: 300;
+      }
+
+      .divider-full {
+        border: none;
+        border-top: 1px solid var(--border);
+      }
+
+      /* ─── PACKAGES ─── */
+      .packages-wrapper {
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .packages-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-left: 1px solid var(--border);
+      }
+
+      .pkg {
+        background: var(--white);
+        border-right: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 40px 36px;
+        position: relative;
+        transition: box-shadow 0.2s;
+      }
+
+      .pkg:hover {
+        box-shadow: 0 0 0 2px var(--orange);
+        z-index: 1;
+      }
+
+      .pkg.recommended {
+        border-top: 3px solid var(--orange);
+      }
+
+      .pkg-tier {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .pkg.recommended .pkg-tier {
+        color: var(--orange);
+      }
+
+      .pkg-name {
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: -1px;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+
+      .pkg-tagline {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+        line-height: 1.5;
+      }
+
+      .pkg-price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        margin-bottom: 4px;
+      }
+
+      .pkg-price {
+        font-size: 44px;
+        font-weight: 900;
+        letter-spacing: -2px;
+        color: var(--black);
+        line-height: 1;
+      }
+
+      .pkg.recommended .pkg-price {
+        color: var(--orange);
+      }
+
+      .pkg-currency {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .pkg-delivery {
+        font-size: 12px;
+        color: var(--text-light);
+        margin-bottom: 28px;
+      }
+
+      .pkg-cta {
+        display: block;
+        text-align: center;
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-bottom: 28px;
+        transition: all 0.15s;
+      }
+
+      .pkg.starter .pkg-cta {
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      .pkg.starter .pkg-cta:hover {
+        border-color: var(--black);
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .pkg.recommended .pkg-cta,
+      .pkg.pro .pkg-cta {
+        background: var(--orange);
+        color: #000;
+      }
+
+      .pkg.recommended .pkg-cta:hover,
+      .pkg.pro .pkg-cta:hover {
+        opacity: 0.85;
+      }
+
+      .pkg-divider {
+        height: 1px;
+        background: var(--border);
+        margin-bottom: 24px;
+      }
+
+      .pkg-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .pkg-list li {
+        font-size: 13px;
+        color: #374151;
+        display: flex;
+        gap: 10px;
+        line-height: 1.5;
+      }
+
+      .pkg-list li::before {
+        content: "—";
+        color: var(--orange);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .pkg-list li.off {
+        color: var(--border);
+      }
+
+      .pkg-list li.off::before {
+        color: var(--border);
+      }
+
+      /* ─── WHY ─── */
+      .why-dark {
+        background: var(--dark);
+        border-top: 1px solid var(--border-dark);
+        border-bottom: 1px solid var(--border-dark);
+      }
+
+      .why-dark .section-title {
+        color: var(--white);
+      }
+      .why-dark .section-sub {
+        color: #6b7280;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--border-dark);
+        border: 1px solid var(--border-dark);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .why-item {
+        background: #141414;
+        padding: 40px;
+        transition: background 0.2s;
+      }
+
+      .why-item:hover {
+        background: #1a1a1a;
+      }
+
+      .why-num {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--orange);
+        margin-bottom: 20px;
+        font-family: "SF Mono", monospace;
+      }
+
+      .why-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+      }
+
+      .why-desc {
+        font-size: 14px;
+        color: #6b7280;
+        line-height: 1.7;
+      }
+
+      .section-title-lg {
+        font-size: clamp(40px, 5vw, 64px);
+        font-weight: 900;
+        letter-spacing: -2px;
+        line-height: 1.05;
+        color: var(--black);
+        margin-bottom: 16px;
+      }
+
+      /* ─── PROCESS ─── */
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .process-item {
+        padding: 36px 32px;
+        border-right: 1px solid var(--border);
+        background: var(--white);
+        transition: background 0.2s;
+      }
+
+      .process-item:last-child {
+        border-right: none;
+      }
+      .process-item:hover {
+        background: var(--card);
+      }
+
+      .process-step-num {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--orange);
+        font-family: "SF Mono", monospace;
+        margin-bottom: 20px;
+      }
+
+      .process-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--black);
+        letter-spacing: -0.3px;
+        margin-bottom: 10px;
+      }
+
+      .process-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* ─── TECH ─── */
+      .tech-light {
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech-tag {
+        padding: 8px 16px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #374151;
+        font-family: "SF Mono", "Fira Code", monospace;
+        transition: all 0.15s;
+        cursor: default;
+      }
+
+      .tech-tag:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+        background: var(--orange-pale);
+      }
+
+      /* ─── FAQ ─── */
+      .faq-list {
+        border-top: 1px solid var(--border);
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--border);
+        padding: 24px 0;
+        cursor: pointer;
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--black);
+        letter-spacing: -0.2px;
+      }
+
+      .faq-icon {
+        width: 24px;
+        height: 24px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: var(--text-muted);
+        flex-shrink: 0;
+        transition: all 0.15s;
+      }
+
+      .faq-item.open .faq-icon {
+        background: var(--orange);
+        border-color: var(--orange);
+        color: #000;
+      }
+
+      .faq-answer {
+        display: none;
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-top: 12px;
+        max-width: 640px;
+      }
+
+      .faq-item.open .faq-answer {
+        display: block;
+      }
+
+      /* ─── CTA BANNER ─── */
+      .cta-banner {
+        background: var(--dark);
+        padding: 80px 48px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--border-dark);
+      }
+
+      .cta-banner::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 400px;
+        background: radial-gradient(
+          ellipse,
+          rgba(249, 115, 22, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .cta-banner h2 {
+        font-size: clamp(36px, 5vw, 64px);
+        font-weight: 900;
+        letter-spacing: -3px;
+        color: var(--white);
+        line-height: 1.3;
+        margin-bottom: 16px;
+      }
+
+      .cta-banner h2 span {
+        color: var(--orange);
+      }
+
+      .cta-banner p {
+        font-size: 16px;
+        color: #6b7280;
+        margin-bottom: 36px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* ─── FOOTER ─── */
+      footer {
+        background: var(--white);
+        border-top: 1px solid var(--border);
+        padding: 32px 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .footer-logo {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--black);
+        letter-spacing: -0.3px;
+      }
+
+      .footer-logo span {
+        color: var(--orange);
+      }
+
+      footer p {
+        font-size: 12px;
+        color: var(--text-light);
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 24px;
+      }
+
+      .footer-links a {
+        font-size: 12px;
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+
+      .footer-links a:hover {
+        color: var(--orange);
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 900px) {
+        nav {
+          padding: 0 24px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          padding: 100px 24px 60px;
+        }
+        .hero-inner {
+          grid-template-columns: 1fr; /* ← stack เป็น 1 คอลัมน์ */
+          gap: 32px;
+        }
+
+        .hero-image {
+          display: block;
+          padding: 0 16px;
+          margin-top: 24px;
+        }
+
+        .hero-image img {
+          width: 100%;
+          border-radius: 8px;
+        }
+        .stats-inner {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 24px;
+        }
+        .stat-item {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+        .stat-item:nth-child(2n) {
+          border-right: none;
+        }
+        .section {
+          padding: 64px 24px;
+        }
+        .packages-grid {
+          grid-template-columns: 1fr;
+        }
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .process-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .process-item:nth-child(2) {
+          border-right: none;
+        }
+        footer {
+          padding: 24px;
+          flex-direction: column;
+          text-align: center;
+        }
+        .cta-banner {
+          padding: 60px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">waris<span>apps</span>.cloud</div>
+      <ul class="nav-links">
+        <li><a href="#packages">Package</a></li>
+        <li><a href="#why">ทำไมต้องเลือกเรา</a></li>
+        <li><a href="#process">ขั้นตอน</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-right">
+        <a
+          href="https://www.fastwork.co"
+          class="btn-nav outline"
+          target="_blank"
+          >Fastwork</a
+        >
+        <a href="#packages" class="btn-nav fill">ดู Package →</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-inner">
+        <!-- คอลัมน์ซ้าย -->
+        <div>
+          <p class="hero-eyebrow">รับทำเว็บร้านค้าออนไลน์สำหรับ SME ไทย</p>
+          <h1>
+            เว็บร้านค้า
+            <span class="accent">ไม่ต้องจ่าย</span>
+            รายเดือน
+          </h1>
+          <p class="hero-desc">
+            ระบบครบจบ PromptPay · LINE OA · Admin panel เป็นของคุณ 100% ไม่มีค่า
+            platform ไม่ถูกล็อค
+          </p>
+        </div>
+
+        <!-- คอลัมน์ขวา — mockup -->
+        <div class="hero-image">
+          <img
+            src="mockup.png"
+            alt="ตัวอย่างเว็บร้านค้า"
+            style="
+              width: 100%;
+              border-radius: 12px;
+              border: 1px solid #2a2a2a;
+              box-shadow: 0 0 60px rgba(249, 115, 22, 0.1);
+            "
+          />
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#packages" class="btn-hero-primary">ดู Package ราคา →</a>
+        <a
+          href="https://www.fastwork.co"
+          class="btn-hero-ghost"
+          target="_blank"
+        >
+          ติดต่อผ่าน Fastwork
+        </a>
+      </div>
+      <!-- trust-bar อยู่ในคอลัมน์ซ้าย -->
+      <div class="trust-bar">
+        <span class="trust-label">รวมทุก Package</span>
+        <div class="trust-items">
+          <span class="trust-item">PromptPay QR</span>
+          <span class="trust-item">LINE OA แจ้งเตือน</span>
+          <span class="trust-item">Admin panel</span>
+          <span class="trust-item">Deploy พร้อมใช้</span>
+          <span class="trust-item">ส่งงานตรงเวลา</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <div class="stat-num">5<span>วัน</span></div>
+          <div class="stat-label">เร็วที่สุดสำหรับ<br />Package Starter</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>tier</span></div>
+          <div class="stat-label">เลือกตามงบและ<br />ความต้องการ</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0<sup>฿</sup></div>
+          <div class="stat-label">ค่า platform<br />รายเดือน</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">source code<br />เป็นของคุณ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PACKAGES -->
+    <hr class="divider-full" />
+    <div class="packages-wrapper" id="packages">
+      <div class="section" style="padding-bottom: 0">
+        <p class="section-eyebrow">Pricing</p>
+        <h2 class="section-title">เลือก Package ที่ใช่</h2>
+        <p class="section-sub">
+          ทุก package รวม PromptPay, LINE OA notify และ Admin panel พร้อมใช้งาน
+        </p>
+      </div>
+
+      <div class="section" style="padding-top: 32px">
+        <div class="packages-grid">
+          <!-- STARTER -->
+          <div class="pkg starter">
+            <p class="pkg-tier">S · Starter</p>
+            <h3 class="pkg-name">ร้านพร้อมขาย</h3>
+            <p class="pkg-tagline">
+              เปิดร้านออนไลน์ได้ใน 5 วัน<br />ครบทุกอย่างที่ต้องใช้จริง
+            </p>
+            <div class="pkg-price-row">
+              <span class="pkg-price">12,000</span>
+              <span class="pkg-currency">฿</span>
+            </div>
+            <p class="pkg-delivery">⏱ ส่งงานใน 5 วัน · Revision 2 ครั้ง</p>
+            <a href="https://www.fastwork.co" class="pkg-cta" target="_blank"
+              >เริ่มต้นเลย</a
+            >
+            <div class="pkg-divider"></div>
+            <ul class="pkg-list">
+              <li>หน้าร้านสินค้า + ตะกร้า + checkout</li>
+              <li>PromptPay QR + slip upload</li>
+              <li>LINE OA แจ้งออเดอร์ใหม่</li>
+              <li>Admin สินค้า คำสั่งซื้อ สต๊อก</li>
+              <li>ปรับสี โลโก้ font ตาม brand</li>
+              <li>Deploy VPS พร้อมใช้งาน</li>
+              <li class="off">บัตรเครดิต / COD</li>
+              <li class="off">Coupon / Flash Sale</li>
+              <li class="off">LINE Login</li>
+            </ul>
+          </div>
+
+          <!-- BUSINESS -->
+          <div class="pkg recommended">
+            <p class="pkg-tier">M · Business — แนะนำ</p>
+            <h3 class="pkg-name">ครบ feature</h3>
+            <p class="pkg-tagline">
+              Homepage custom + SEO ครบ<br />แข่งขันได้จริงในตลาดออนไลน์
+            </p>
+            <div class="pkg-price-row">
+              <span class="pkg-price">24,000</span>
+              <span class="pkg-currency">฿</span>
+            </div>
+            <p class="pkg-delivery">⏱ ส่งงานใน 8 วัน · Revision 3 ครั้ง</p>
+            <a href="https://www.fastwork.co" class="pkg-cta" target="_blank"
+              >เลือก Package นี้</a
+            >
+            <div class="pkg-divider"></div>
+            <ul class="pkg-list">
+              <li>ทุกอย่างใน Starter</li>
+              <li>Homepage design custom</li>
+              <li>บัตรเครดิต/เดบิต (Omise)</li>
+              <li>เก็บเงินปลายทาง (COD)</li>
+              <li>Coupon / โค้ดส่วนลด</li>
+              <li>Review & Rating สินค้า</li>
+              <li>SEO (sitemap, og, schema)</li>
+              <li>Wishlist บันทึกสินค้า</li>
+              <li>LINE OA แจ้งสถานะลูกค้า</li>
+            </ul>
+          </div>
+
+          <!-- PRO -->
+          <div class="pkg pro">
+            <p class="pkg-tier">L · Pro</p>
+            <h3 class="pkg-name">ระบบเต็ม</h3>
+            <p class="pkg-tagline">
+              เหมาะกับร้านเสื้อผ้าแฟชั่น<br />+ Support 1 เดือนหลัง launch
+            </p>
+            <div class="pkg-price-row">
+              <span class="pkg-price">36,000</span>
+              <span class="pkg-currency">฿</span>
+            </div>
+            <p class="pkg-delivery">⏱ ส่งงานใน 14 วัน · Revision ไม่จำกัด</p>
+            <a href="https://www.fastwork.co" class="pkg-cta" target="_blank"
+              >เลือก Package นี้</a
+            >
+            <div class="pkg-divider"></div>
+            <ul class="pkg-list">
+              <li>ทุกอย่างใน Business</li>
+              <li>Color swatch เลือกสีสินค้า</li>
+              <li>ตารางไซส์ popup</li>
+              <li>Flash Sale + Countdown timer</li>
+              <li>สะสมแต้ม Loyalty</li>
+              <li>LINE Login สำหรับลูกค้า</li>
+              <li>Analytics dashboard</li>
+              <li>Admin Guide PDF</li>
+              <li>Support 1 เดือนหลัง launch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-full" />
+
+    <!-- WHY -->
+    <div class="why-dark" id="why">
+      <div class="section">
+        <p class="section-eyebrow">ทำไมต้องเลือกเรา</p>
+        <h2 class="section-title" style="color: white">
+          ออกแบบมาสำหรับ<br />ร้านค้าไทย
+        </h2>
+        <p class="section-sub">
+          ไม่ใช่ template สำเร็จรูปจากต่างประเทศ
+          แต่สร้างขึ้นมาเพื่อตลาดไทยโดยเฉพาะ
+        </p>
+
+        <div class="why-grid">
+          <div class="why-item">
+            <p class="why-num">01</p>
+            <h3 class="why-title">PromptPay พร้อมใช้ทันที</h3>
+            <p class="why-desc">
+              สร้าง QR code อัตโนมัติตามยอดสั่งซื้อ ลูกค้าสแกนจ่ายได้เลย
+              ไม่ต้องพิมพ์เลขบัญชีทุกครั้ง
+              ระบบตรวจสอบสลิปและอัปเดตสถานะอัตโนมัติ
+            </p>
+          </div>
+          <div class="why-item">
+            <p class="why-num">02</p>
+            <h3 class="why-title">LINE OA แจ้งเตือนทันที</h3>
+            <p class="why-desc">
+              มีออเดอร์ใหม่ ลูกค้าส่งสลิป ระบบส่งข้อความแจ้งผ่าน LINE
+              ส่วนตัวทันที ไม่พลาดออเดอร์แม้แต่อัน ไม่ต้องเปิดหน้าจอค้างไว้
+            </p>
+          </div>
+          <div class="why-item">
+            <p class="why-num">03</p>
+            <h3 class="why-title">ไม่ต้องจ่ายรายเดือน</h3>
+            <p class="why-desc">
+              จ่ายครั้งเดียว เว็บเป็นของคุณ 100% ไม่มีค่า platform รายเดือนแบบ
+              Shopify ไม่มีค่า transaction fee ไม่ถูกล็อคอยู่กับเจ้าไหน
+            </p>
+          </div>
+          <div class="why-item">
+            <p class="why-num">04</p>
+            <h3 class="why-title">Admin จัดการได้เอง</h3>
+            <p class="why-desc">
+              เพิ่มสินค้า แก้ราคา จัดการออเดอร์ สร้าง coupon ตั้งค่าร้าน
+              ทำได้ทั้งหมดผ่านหน้า Admin โดยไม่ต้องรอช่าง ลดการพึ่งพาระยะยาว
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESS -->
+    <div id="process">
+      <div class="section">
+        <p class="section-eyebrow">ขั้นตอนการทำงาน</p>
+        <h2 class="section-title">จาก brief<br />ถึงเปิดร้าน</h2>
+        <p class="section-sub">
+          กระบวนการที่ชัดเจน ตรงเวลา และโปร่งใสในทุกขั้นตอน
+        </p>
+
+        <div class="process-grid">
+          <div class="process-item">
+            <p class="process-step-num">STEP 01</p>
+            <h3 class="process-title">Brief & คุยรายละเอียด</h3>
+            <p class="process-desc">
+              กรอก brief form สั้นๆ คุยเรื่อง brand สี สินค้า และ feature
+              ที่ต้องการ จ่าย deposit 50%
+            </p>
+          </div>
+          <div class="process-item">
+            <p class="process-step-num">STEP 02</p>
+            <h3 class="process-title">Preview ภายใน 2 วัน</h3>
+            <p class="process-desc">
+              ส่ง preview หน้าแรกให้ดูก่อน ปรับสี โลโก้ font
+              ได้ก่อนเริ่มทำจริงทั้งเว็บ
+            </p>
+          </div>
+          <div class="process-item">
+            <p class="process-step-num">STEP 03</p>
+            <h3 class="process-title">พัฒนาและทดสอบ</h3>
+            <p class="process-desc">
+              ทำครบทุก feature ทดสอบ PromptPay LINE OA และ Admin panel จน pass
+              ทุก case
+            </p>
+          </div>
+          <div class="process-item">
+            <p class="process-step-num">STEP 04</p>
+            <h3 class="process-title">Deploy + สอนใช้งาน</h3>
+            <p class="process-desc">
+              ขึ้น server พร้อมสอน Admin ผ่าน Zoom 30-60 นาที ส่ง guide PDF
+              ครบทุกฟีเจอร์
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-full" />
+
+    <!-- TECH -->
+    <div class="tech-light">
+      <div class="section">
+        <p class="section-eyebrow">Tech Stack</p>
+        <h2 class="section-title">เทคโนโลยีที่ใช้</h2>
+        <p class="section-sub">
+          Stack ทันสมัย เร็ว และ maintain ได้ในระยะยาว
+          เหมาะกับการขยายระบบในอนาคต
+        </p>
+        <div class="tech-tags">
+          <span class="tech-tag">Next.js 15</span>
+          <span class="tech-tag">React 19</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Tailwind CSS v4</span>
+          <span class="tech-tag">Prisma 5</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">NextAuth v5</span>
+          <span class="tech-tag">Zustand</span>
+          <span class="tech-tag">PromptPay EMV</span>
+          <span class="tech-tag">Omise</span>
+          <span class="tech-tag">LINE Messaging API</span>
+          <span class="tech-tag">Resend Email</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">Hostinger VPS</span>
+          <span class="tech-tag">Turborepo</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider-full" />
+
+    <!-- FAQ -->
+    <div id="faq">
+      <div class="section">
+        <p class="section-eyebrow">FAQ</p>
+        <h2 class="section-title">คำถามที่พบบ่อย</h2>
+        <p class="section-sub">
+          มีคำถามเพิ่มเติม ติดต่อผ่าน Fastwork หรือ LINE ได้เลยครับ
+        </p>
+
+        <div class="faq-list">
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              ทำไมไม่ใช้ Shopify หรือ LINE MyShop แทน?
+              <span class="faq-icon">+</span>
+            </div>
+            <p class="faq-answer">
+              Shopify คิดค่าบริการ $29-79/เดือน (~1,000-2,800฿) รวม 3
+              ปีเสียไปกว่า 100,000฿ ส่วน LINE MyShop ปรับแต่งได้น้อยมาก
+              เว็บที่ทำให้เป็นของคุณ 100% ปรับได้ทุกอย่าง
+              และไม่มีค่ารายเดือนครับ
+            </p>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              ต้องมีความรู้เทคนิคมั้ยในการใช้งาน?
+              <span class="faq-icon">+</span>
+            </div>
+            <p class="faq-answer">
+              ไม่ต้องเลยครับ Admin panel ออกแบบให้ใช้งานง่ายเหมือน Shopee Seller
+              Center ลูกค้าทั่วไปที่ไม่มีความรู้ด้าน IT สามารถเพิ่มสินค้า
+              จัดการออเดอร์ และตั้งค่าร้านได้เองครับ
+            </p>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              ถ้าต้องการเพิ่ม feature ทีหลังได้มั้ย?
+              <span class="faq-icon">+</span>
+            </div>
+            <p class="faq-answer">
+              ได้ครับ เช่น ถ้าเริ่มจาก Starter แล้วอยากเพิ่ม Coupon หรือ Review
+              สามารถ upgrade เป็น Business ได้ทีหลัง คิดราคาตามส่วนต่างระหว่าง
+              tier บวกค่า implement ครับ
+            </p>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              ค่าโฮสต์รายเดือนเท่าไหร่?
+              <span class="faq-icon">+</span>
+            </div>
+            <p class="faq-answer">
+              ขึ้น Hostinger VPS ราคา ~300฿/เดือน หรือประมาณ 3,600฿/ปี
+              ซึ่งถูกกว่า Shopify มากครับ และ VPS 1 ตัวรันได้หลายร้านพร้อมกัน
+              ถ้ามี VPS อยู่แล้วก็ไม่มีค่าใช้จ่ายเพิ่มครับ
+            </p>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              payment terms เป็นยังไง?
+              <span class="faq-icon">+</span>
+            </div>
+            <p class="faq-answer">
+              50% deposit ก่อนเริ่มงาน → 30% หลัง approve preview → 20% หลัง
+              deploy และส่ง source code ครับ
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <p class="section-eyebrow" style="margin-bottom: 20px">พร้อมเริ่มแล้ว?</p>
+      <h2>เปิดร้านออนไลน์<br /><span>ในราคาที่คุ้มค่า</span></h2>
+      <p>
+        ติดต่อผ่าน Fastwork หรือ inbox มาได้เลย<br />ตอบภายใน 1 ชั่วโมง
+        (09.00-21.00 น.)
+      </p>
+      <div class="cta-actions">
+        <a
+          href="https://www.fastwork.co"
+          class="btn-hero-primary"
+          target="_blank"
+          >ติดต่อผ่าน Fastwork →</a
+        >
+        <a href="#packages" class="btn-hero-ghost">ดู Package อีกครั้ง</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">waris<span>apps</span>.cloud</div>
+      <p>© 2026 warisapps.cloud · รับทำเว็บร้านค้าออนไลน์สำหรับ SME ไทย</p>
+      <div class="footer-links">
+        <a href="https://www.fastwork.co" target="_blank">Fastwork</a>
+        <a href="https://www.fiverr.com" target="_blank">Fiverr</a>
+        <a href="mailto:alwaris.dr@gmail.com">Email</a>
+      </div>
+    </footer>
+
+    <script>
+      // FAQ Toggle
+      function toggleFaq(el) {
+        const isOpen = el.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach((i) => {
+          i.classList.remove("open");
+          i.querySelector(".faq-icon").textContent = "+";
+        });
+        if (!isOpen) {
+          el.classList.add("open");
+          el.querySelector(".faq-icon").textContent = "−";
+        }
+      }
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target)
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      // Nav active state on scroll
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        nav.style.boxShadow =
+          window.scrollY > 10 ? "0 1px 20px rgba(0,0,0,0.08)" : "none";
+      });
+    </script>
+  </body>
+</html>
